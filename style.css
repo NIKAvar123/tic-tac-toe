@@ -38,4 +38,58 @@ body {
     font-size: 1.5em;
     color: green;
   }
-  
+
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #e3f2fd; /* ღია ლურჯი ფონი */
+}
+
+h1 {
+    color: #1e88e5; /* მუქი ლურჯი სათაური */
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.cell {
+    background-color: #ffffff;
+    border: 2px solid #1e88e5;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #bbdefb; /* ღია ლურჯი hover ეფექტისთვის */
+}
+
+#restart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #1e88e5; /* მუქი ლურჯი ღილაკისთვის */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+    background-color: #1565c0; /* hover-ზე მუქი ლურჯი */
+}
+
+#winner-message {
+    font-size: 1.5em;
+    color: #43a047; /* მწვანე ფერი გამარჯვების ტექსტისთვის */
+}

@@ -1,5 +1,6 @@
 const gameBoard = document.getElementById('game-board');
 const winnerMessage = document.getElementById('winner-message');
+const currentPlayerMessage = document.getElementById('current-player-message');
 const restartButton = document.getElementById('restart-button');
 
 let board = ['', '', '', '', '', '', '', '', ''];
@@ -17,14 +18,21 @@ function handleCellClick(event) {
   event.target.textContent = currentPlayer;
 
   checkWinner();
-  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  if (gameActive) {
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    updateCurrentPlayerMessage();
+  }
+}
+
+function updateCurrentPlayerMessage() {
+  currentPlayerMessage.textContent = `Player ${currentPlayer}'s turn`;
 }
 
 function checkWinner() {
   const winningCombinations = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-    [0, 4, 8], [2, 4, 6]             // Diagonals
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+    [0, 4, 8], [2, 4, 6]            
   ];
 
   for (const combination of winningCombinations) {
@@ -48,6 +56,7 @@ function restartGame() {
   currentPlayer = 'X';
   gameActive = true;
   winnerMessage.textContent = '';
+  updateCurrentPlayerMessage();
   document.querySelectorAll('.cell').forEach(cell => cell.textContent = '');
 }
 
@@ -65,3 +74,4 @@ function createBoard() {
 restartButton.addEventListener('click', restartGame);
 
 createBoard();
+updateCurrentPlayerMessage();
